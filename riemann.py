@@ -2,8 +2,8 @@
 
 ###############################################
 # module: riemann.py
-# YOUR NAME
-# YOUR A#
+# Krista Gurney
+# A01671888
 ###############################################
 
 ## modify these imports as you see fit.

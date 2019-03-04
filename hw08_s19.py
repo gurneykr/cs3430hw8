@@ -2,8 +2,8 @@
 
 #########################################
 # module: hw08_s19.py
-# YOUR NAME
-# YOUR A#
+# Krista Gurney
+# A01671888
 #########################################
 
 ### modify these as you see fit.
