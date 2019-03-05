@@ -53,8 +53,8 @@ def riemann_approx_with_gt(fexpr, a, b, gt, n_upper, pp=0):
     #call riemann approx  n_upper times and calculate the error
     err_list = []
     for i in range(1, n_upper.get_val()+1):
-        result = riemann_approx(fexpr, a, b, const(i), pp=0)
-        err = gt.get_val() - result.get_val()
+        result = riemann_approx(fexpr, a, b, const(i), pp)
+        err = abs(gt.get_val() - result.get_val())
         err_list.append(err)
     return err_list
 
