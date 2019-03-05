@@ -58,21 +58,38 @@ class Assign01UnitTests(unittest.TestCase):
     #         print(n, err)
     #     print("Unit Test 03: pass")
 
-    def test_04(self):
-        # ln(x )with the middle point riemann sum on a partition of 100 subintervals
-        print("****Unit Test 04********")
+    # def test_04(self):
+    #     # ln(x )with the middle point riemann sum on a partition of 100 subintervals
+    #     print("****Unit Test 04********")
+    #
+    #     fex = make_ln(make_pwr('x', 1.0))
+    #     print(fex)
+    #     err = 0.0001
+    #     approx = riemann_approx(fex,
+    #                               make_const(1.0),
+    #                               make_const(2.0),
+    #                               make_const(100),
+    #                               pp=0)
+    #
+    #     assert  abs(approx.get_val() - 0.386296444432) <= err
+    #     print("Unit Test 04: pass")
 
-        fex = make_ln(make_pwr('x', 1.0))
-        print(fex)
-        err = 0.0001
-        approx = riemann_approx(fex,
-                                  make_const(1.0),
-                                  make_const(2.0),
-                                  make_const(100),
-                                  pp=0)
-        print(approx.get_val())
-        assert  abs(approx.get_val() - 0.386296444432) <= err
-        print("Unit Test 04: pass")
+    # def test_04_left_and_right_riemann(self):
+    #     # x^2 with 10 subintervals
+    #     print("****Unit Test 04********")
+    #
+    #     fex = make_pwr('x', 2.0)
+    #     print(fex)
+    #     err = 0.0001
+    #     approx = riemann_approx(fex,
+    #                               make_const(1.0),
+    #                               make_const(10.0),
+    #                               make_const(10),
+    #                               pp=-1)
+    #
+    #     # assert  abs(approx.get_val() - 333) <= err
+    #     print(approx.get_val())
+    #     print("Unit Test 04: pass")
 
     # def test_05(self):
     #     #x^2 + 5 with the midpoint rule on a partition of 250

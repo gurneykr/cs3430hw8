@@ -32,15 +32,12 @@ def riemann_approx(fexpr, a, b, n, pp=0):
     a = int(a.get_val())
     b = int(b.get_val())
 
-
     if pp == -1: #left riemann
-        #for i in (a, b, partition):
-        pass
-            # sum += fex_tof(i)*partition
+        for i in np.arange(a, b, partition):
+            sum += fex_tof(i)*partition
     elif pp == 1: #right riemann
-        pass
-        # for i in range(a.get_val()-partition.get_val(), b.get_val()-partition.get_val(), partition.get_val()):#probably wrong
-        #     sum += fex_tof(i)*partition
+        for i in np.arange(a+partition, b+partition, partition):
+            sum += fex_tof(i)*partition
     elif pp == 0: #midpoint riemann
         for i in np.arange(a, b, partition):
             mid = i + (partition/2)
