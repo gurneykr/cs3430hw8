@@ -49,7 +49,7 @@ def riemann_approx_with_gt(fexpr, a, b, gt, n_upper, pp=0):
     assert isinstance(b, const)
     assert isinstance(gt, const)
     assert isinstance(n_upper, const)
-    ## your code here
+
     #call riemann approx  n_upper times and calculate the error
     err_list = []
     for i in range(1, n_upper.get_val()+1):
@@ -71,7 +71,6 @@ def plot_riemann_error(fexpr, a, b, gt, n):
     xvals = []
     for i in range(1, n.get_val()+1):
         xvals.append(i)
-
 
     fig1 = plt.figure(1)
     fig1.suptitle('Riemann Approximation Error')

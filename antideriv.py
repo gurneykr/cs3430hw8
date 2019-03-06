@@ -12,6 +12,7 @@ from var import var
 from plus import plus
 from prod import prod
 from quot import quot
+from tof import tof
 from maker import make_const, make_pwr, make_prod, make_plus, make_ln, make_absv
 import math
 from consts import is_e_const, is_pi_const, is_zero_const
@@ -67,7 +68,10 @@ def antideriv(i):
 def antiderivdef(expr, a, b):
     assert isinstance(a, const)
     assert isinstance(b, const)
-    ## your code here
-    pass
+
+    anti_deriv = antideriv(expr)
+    anti_deriv_tof = tof(anti_deriv)
+
+    return const(anti_deriv_tof(b.get_val())- anti_deriv_tof(a.get_val()))
     
     

@@ -107,21 +107,21 @@ class Assign01UnitTests(unittest.TestCase):
     #     print(approx.get_val())
     #     print("Unit Test 04: pass")
 
-    # def test_05(self):
-    #     #x^2 + 5 with the midpoint rule on a partition of 250
-    #     print("****Unit Test 05********")
-    #
-    #     fexpr = make_plus(make_pwr('x', 2.0,
-    #                                make_const(5.0)))
-    #     a, b, n = make_const(0.0), make_const(4.0), make_const(250)
-    #     approx = midpoint_rule(fexpr, a, b, n)
-    #     print(approx)
-    #     err = 0.001
-    #     iv = antiderivdef(fexpr, a, b)
-    #     print(iv)
-    #     assert abs(approx.get_val() - iv.get_val()) <= err
-    #     print("Unit Test 05: pass")
-    #
+    def test_05(self):
+        #x^2 + 5 with the midpoint rule on a partition of 250
+        print("****Unit Test 05********")
+
+        fexpr = make_plus(make_pwr('x', 2.0),
+                                   make_const(5.0))
+        a, b, n = make_const(0.0), make_const(4.0), make_const(250)
+        approx = midpoint_rule(fexpr, a, b, n)
+        print(approx)
+        err = 0.001
+        iv = antiderivdef(fexpr, a, b)
+        print(iv)
+        assert abs(approx.get_val() - iv.get_val()) <= err
+        print("Unit Test 05: pass")
+
     # def test_06(self):
     #     #x^2 + 5 with the trapezoidal rule on a partition of 350
     #     print("****Unit Test 06********")
@@ -180,12 +180,17 @@ class Assign01UnitTests(unittest.TestCase):
     #     assert abs(approx.get_val() - 3.24124) <= err
     #     print("Unit Test 09: pass")
 
-    def test_10(self):
-        print("****Unit Test 10********")
-        fex = make_prod(make_const(3.0), make_pwr('x', 2.0))
-        fex = make_plus(fex, make_e_expr(make_pwr('x', 1.0)))
-        plot_riemann_error(fex, make_const(-1.0), make_const(1.0), make_const(4.35),
-                                                    make_const(10))
+    # def test_10(self):
+    #     print("****Unit Test 10********")
+    #     fex = make_prod(make_const(3.0), make_pwr('x', 2.0))
+    #     fex = make_plus(fex, make_e_expr(make_pwr('x', 1.0)))
+    #     plot_riemann_error(fex, make_const(-1.0), make_const(1.0), make_const(4.35),
+    #                                                 make_const(50))
+
+    # def test_11(self):
+    #     print("****Unit Test 11********")
+    #     fex = make_const(4.0)
+    #     print(antiderivdef(fex, const(0.0), const(3.0)))
 
     if __name__ == "__main__":
         unittest.main()
