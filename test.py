@@ -55,24 +55,24 @@ class Assign01UnitTests(unittest.TestCase):
     #     print("Unit Test 02: pass")
 
     # def test_03(self):
-        # #(3x^2 +e^x) with the right point riemann sum on a partition of 10 subintervals
-        # print("****Unit Test 03********")
-        # fex1 = make_prod(make_const(3.0), make_pwr('x', 2.0))
-        # fex = make_plus(fex1, make_e_expr(make_pwr('x', 1.0)))
-        # print(fex)
-        # err_list = riemann_approx_with_gt(fex,
-        #                                   make_const(-1.0),
-        #                                   make_const(1.0),
-        #                                   make_const(4.35),
-        #                                   make_const(10),
-        #                                   pp=+1)
-        # count = 1
-        # for err in err_list:
-        #     print(count, err)
-        #     count += 1
-        # # for n, err in err_list:
-        # #     print(n, err)
-        # print("Unit Test 03: pass")
+    #     #(3x^2 +e^x) with the right point riemann sum on a partition of 10 subintervals
+    #     print("****Unit Test 03********")
+    #     fex1 = make_prod(make_const(3.0), make_pwr('x', 2.0))
+    #     fex = make_plus(fex1, make_e_expr(make_pwr('x', 1.0)))
+    #     print(fex)
+    #     err_list = riemann_approx_with_gt(fex,
+    #                                       make_const(-1.0),
+    #                                       make_const(1.0),
+    #                                       make_const(4.35),
+    #                                       make_const(10),
+    #                                       pp=+1)
+    #     count = 1
+    #     for err in err_list:
+    #         print(count, err)
+    #         count += 1
+    #     # for n, err in err_list:
+    #     #     print(n, err)
+    #     print("Unit Test 03: pass")
 
     # def test_04(self):
     #     # ln(x )with the middle point riemann sum on a partition of 100 subintervals
@@ -179,6 +179,13 @@ class Assign01UnitTests(unittest.TestCase):
     #     err = 0.001
     #     assert abs(approx.get_val() - 3.24124) <= err
     #     print("Unit Test 09: pass")
+
+    def test_10(self):
+        print("****Unit Test 10********")
+        fex = make_prod(make_const(3.0), make_pwr('x', 2.0))
+        fex = make_plus(fex, make_e_expr(make_pwr('x', 1.0)))
+        plot_riemann_error(fex, make_const(-1.0), make_const(1.0), make_const(4.35),
+                                                    make_const(10))
 
     if __name__ == "__main__":
         unittest.main()

@@ -25,7 +25,7 @@ def riemann_approx(fexpr, a, b, n, pp=0):
     assert isinstance(b, const)
     assert isinstance(n, const)
 
-    sum = 0
+    area = 0
     fex_tof = tof(fexpr)
     partition = (b.get_val() - a.get_val())/ n.get_val()
 
@@ -34,15 +34,15 @@ def riemann_approx(fexpr, a, b, n, pp=0):
 
     if pp == -1: #left riemann
         for i in np.arange(a, b, partition):
-            sum += fex_tof(i)*partition
+            area += fex_tof(i)*partition
     elif pp == 1: #right riemann
         for i in np.arange(a+partition, b+partition, partition):
-            sum += fex_tof(i)*partition
+            area += fex_tof(i)*partition
     elif pp == 0: #midpoint riemann
         for i in np.arange(a, b, partition):
             mid = i + (partition/2)
-            sum += fex_tof(mid)*partition
-    return const(sum)
+            area += fex_tof(mid)*partition
+    return const(area)
 
 def riemann_approx_with_gt(fexpr, a, b, gt, n_upper, pp=0):
     assert isinstance(a, const)
@@ -63,7 +63,30 @@ def plot_riemann_error(fexpr, a, b, gt, n):
     assert isinstance(b, const)
     assert isinstance(gt, const)
     assert isinstance(n, const)
-    # your code here
+
+    err_left = riemann_approx_with_gt(fexpr, a, b, gt, n, -1)
+    err_right = riemann_approx_with_gt(fexpr, a, b, gt, n, 1)
+    err_midpoint = riemann_approx_with_gt(fexpr, a, b, gt, n, 0)
+
+    xvals = []
+    for i in range(1, n.get_val()+1):
+        xvals.append(i)
+
+
+    fig1 = plt.figure(1)
+    fig1.suptitle('Riemann Approximation Error')
+    plt.xlabel('n')
+    plt.ylabel('err')
+    plt.ylim([0, 7.5])
+    plt.xlim([0, n.get_val()])
+    plt.grid()
+    plt.plot(xvals, err_left, label='left', c='g')
+    plt.plot(xvals, err_right, label='right', c='b')
+    plt.plot(xvals, err_midpoint, label='midpoint', c='r')
+
+    plt.legend(loc='best')
+    plt.show()
+
 
 
 
