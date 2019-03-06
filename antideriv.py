@@ -73,5 +73,3 @@ def antiderivdef(expr, a, b):
     anti_deriv_tof = tof(anti_deriv)
 
     return const(anti_deriv_tof(b.get_val())- anti_deriv_tof(a.get_val()))
-    
-    

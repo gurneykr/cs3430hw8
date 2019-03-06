@@ -107,27 +107,27 @@ class Assign01UnitTests(unittest.TestCase):
     #     print(approx.get_val())
     #     print("Unit Test 04: pass")
 
-    def test_05(self):
-        #x^2 + 5 with the midpoint rule on a partition of 250
-        print("****Unit Test 05********")
-
-        fexpr = make_plus(make_pwr('x', 2.0),
-                                   make_const(5.0))
-        a, b, n = make_const(0.0), make_const(4.0), make_const(250)
-        approx = midpoint_rule(fexpr, a, b, n)
-        print(approx)
-        err = 0.001
-        iv = antiderivdef(fexpr, a, b)
-        print(iv)
-        assert abs(approx.get_val() - iv.get_val()) <= err
-        print("Unit Test 05: pass")
+    # def test_05(self):
+    #     #x^2 + 5 with the midpoint rule on a partition of 250
+    #     print("****Unit Test 05********")
+    #
+    #     fexpr = make_plus(make_pwr('x', 2.0),
+    #                                make_const(5.0))
+    #     a, b, n = make_const(0.0), make_const(4.0), make_const(250)
+    #     approx = midpoint_rule(fexpr, a, b, n)
+    #     print(approx)
+    #     err = 0.001
+    #     iv = antiderivdef(fexpr, a, b)
+    #     print(iv)
+    #     assert abs(approx.get_val() - iv.get_val()) <= err
+    #     print("Unit Test 05: pass")
 
     # def test_06(self):
     #     #x^2 + 5 with the trapezoidal rule on a partition of 350
     #     print("****Unit Test 06********")
     #
-    #     fexpr = make_plus(make_pwr('x', 2.0,
-    #                                make_const(5.0)))
+    #     fexpr = make_plus(make_pwr('x', 2.0),
+    #                                make_const(5.0))
     #     a, b, n = make_const(0.0), make_const(4.0), make_const(350)
     #     approx = trapezoidal_rule(fexpr, a, b, n)
     #     print(approx)
@@ -136,22 +136,22 @@ class Assign01UnitTests(unittest.TestCase):
     #     print(iv)
     #     assert abs(approx.get_val() - iv.get_val()) <= err
     #     print("Unit Test 06: pass")
-    #
-    # def test_07(self):
-    #     # x^2 + 5 with the simpson rule on a partition of 10 subintervals
-    #     print("****Unit Test 07********")
-    #
-    #     fexpr = make_plus(make_pwr('x', 2.0,
-    #                                make_const(5.0)))
-    #     a, b, n = make_const(0.0), make_const(4.0), make_const(10)
-    #     approx = simpson_rule(fexpr, a, b, n)
-    #     print(approx)
-    #     err = 0.001
-    #     iv = antiderivdef(fexpr, a, b)
-    #     print(iv)
-    #     assert abs(approx.get_val() - iv.get_val()) <= err
-    #     print("Unit Test 07: pass")
-    #
+
+    def test_07(self):
+        # x^2 + 5 with the simpson rule on a partition of 10 subintervals
+        print("****Unit Test 07********")
+
+        fexpr = make_plus(make_pwr('x', 2.0,
+                                   make_const(5.0)))
+        a, b, n = make_const(0.0), make_const(4.0), make_const(10)
+        approx = simpson_rule(fexpr, a, b, n)
+        print(approx)
+        err = 0.001
+        iv = antiderivdef(fexpr, a, b)
+        print(iv)
+        assert abs(approx.get_val() - iv.get_val()) <= err
+        print("Unit Test 07: pass")
+
     # def test_08(self):
     #     # 2xe^(x^2) with the simpson rule on a partition of 100 subintervals
     #     print("****Unit Test 08********")
