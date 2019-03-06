@@ -51,10 +51,12 @@ def simpson_rule(fexpr, a, b, n):
     assert isinstance(a, const)
     assert isinstance(b, const)
     assert isinstance(n, const)
-    # your code here
-    pass
 
-  
+    #Simpson = (2M+T)/3
+    T = trapezoidal_rule(fexpr, a, b, n)
+    M = midpoint_rule(fexpr, a, b, n)
+
+    return const((2*M.get_val() + T.get_val())/3)
 
   
 

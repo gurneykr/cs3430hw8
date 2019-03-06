@@ -141,8 +141,8 @@ class Assign01UnitTests(unittest.TestCase):
         # x^2 + 5 with the simpson rule on a partition of 10 subintervals
         print("****Unit Test 07********")
 
-        fexpr = make_plus(make_pwr('x', 2.0,
-                                   make_const(5.0)))
+        fexpr = make_plus(make_pwr('x', 2.0),
+                                   make_const(5.0))
         a, b, n = make_const(0.0), make_const(4.0), make_const(10)
         approx = simpson_rule(fexpr, a, b, n)
         print(approx)
