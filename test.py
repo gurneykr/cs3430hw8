@@ -22,16 +22,10 @@ class Assign01UnitTests(unittest.TestCase):
                                           make_const(4.35),
                                           make_const(10),
                                           pp=0)
-        count = 1
-        for err in err_list:
-            print(count, err)
-            count += 1
 
-        # for n, err in err_list:
-        #     print(n, err)
+        for n, err in err_list:
+            print(n, err)
         print("Unit Test 01: pass")
-
-
 
     def test_02(self):
         #(3x^2 +e^x) with the left point riemann sum on a partition of 10 subintervals
@@ -45,13 +39,9 @@ class Assign01UnitTests(unittest.TestCase):
                                           make_const(4.35),
                                           make_const(10),
                                           pp=-1)
-        count = 1
-        for err in err_list:
-            print(count, err)
-            count += 1
 
-        # for n, err in err_list:
-        #     print(n, err)
+        for n, err in err_list:
+            print(n, err)
         print("Unit Test 02: pass")
 
     def test_03(self):
@@ -66,12 +56,9 @@ class Assign01UnitTests(unittest.TestCase):
                                           make_const(4.35),
                                           make_const(10),
                                           pp=+1)
-        count = 1
-        for err in err_list:
-            print(count, err)
-            count += 1
-        # for n, err in err_list:
-        #     print(n, err)
+
+        for n, err in err_list:
+            print(n, err)
         print("Unit Test 03: pass")
 
     def test_04(self):
