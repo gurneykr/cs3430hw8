@@ -5,179 +5,206 @@ from riemann import riemann_approx, riemann_approx_with_gt, plot_riemann_error
 from deriv import deriv
 from antideriv import antideriv, antiderivdef
 from defintegralapprox import midpoint_rule, trapezoidal_rule, simpson_rule
+from exam2_questions import demand_elasticity, net_change, consumer_surplus, bell_curve_iq_approx,spread_of_disease_model
 import unittest
 import math
 
 class Assign01UnitTests(unittest.TestCase):
 
-    def test_01(self):
-        #(3x^2 +e^x) with the midpoint riemann sum on a partition of 10 subintervals
-        print("****Unit Test 01********")
-        fex1 = make_prod(make_const(3.0), make_pwr('x', 2.0))
-        fex = make_plus(fex1, make_e_expr(make_pwr('x', 1.0)))
+    # def test_01(self):
+    #     #(3x^2 +e^x) with the midpoint riemann sum on a partition of 10 subintervals
+    #     print("****Unit Test 01********")
+    #     fex1 = make_prod(make_const(3.0), make_pwr('x', 2.0))
+    #     fex = make_plus(fex1, make_e_expr(make_pwr('x', 1.0)))
+    #     print(fex)
+    #     err_list = riemann_approx_with_gt(fex,
+    #                                       make_const(-1.0),
+    #                                       make_const(1.0),
+    #                                       make_const(4.35),
+    #                                       make_const(10),
+    #                                       pp=0)
+    #
+    #     for n, err in err_list:
+    #         print(n, err)
+    #     print("Unit Test 01: pass")
+    #
+    # def test_02(self):
+    #     #(3x^2 +e^x) with the left point riemann sum on a partition of 10 subintervals
+    #     print("****Unit Test 02********")
+    #     fex1 = make_prod(make_const(3.0), make_pwr('x', 2.0))
+    #     fex = make_plus(fex1, make_e_expr(make_pwr('x', 1.0)))
+    #     print(fex)
+    #     err_list = riemann_approx_with_gt(fex,
+    #                                       make_const(-1.0),
+    #                                       make_const(1.0),
+    #                                       make_const(4.35),
+    #                                       make_const(10),
+    #                                       pp=-1)
+    #
+    #     for n, err in err_list:
+    #         print(n, err)
+    #     print("Unit Test 02: pass")
+    #
+    # def test_03(self):
+    #     #(3x^2 +e^x) with the right point riemann sum on a partition of 10 subintervals
+    #     print("****Unit Test 03********")
+    #     fex1 = make_prod(make_const(3.0), make_pwr('x', 2.0))
+    #     fex = make_plus(fex1, make_e_expr(make_pwr('x', 1.0)))
+    #     print(fex)
+    #     err_list = riemann_approx_with_gt(fex,
+    #                                       make_const(-1.0),
+    #                                       make_const(1.0),
+    #                                       make_const(4.35),
+    #                                       make_const(10),
+    #                                       pp=+1)
+    #
+    #     for n, err in err_list:
+    #         print(n, err)
+    #     print("Unit Test 03: pass")
+    #
+    # def test_04(self):
+    #     # ln(x )with the middle point riemann sum on a partition of 100 subintervals
+    #     print("****Unit Test 04********")
+    #
+    #     fex = make_ln(make_pwr('x', 1.0))
+    #     print(fex)
+    #     err = 0.0001
+    #     approx = riemann_approx(fex,
+    #                               make_const(1.0),
+    #                               make_const(2.0),
+    #                               make_const(100),
+    #                               pp=0)
+    #     print(approx.get_val())
+    #     assert  abs(approx.get_val() - 0.386296444432) <= err
+    #     print("Unit Test 04: pass")
+    #
+    # def test_04_left_and_right_riemann(self):
+    #     # x^2 with 10 subintervals
+    #     print("****Unit Test 04********")
+    #
+    #     fex = make_pwr('x', 2.0)
+    #     print(fex)
+    #     err = 0.0001
+    #     approx = riemann_approx(fex,
+    #                               make_const(1.0),
+    #                               make_const(10.0),
+    #                               make_const(10),
+    #                               pp=-1)
+    #
+    #     # assert  abs(approx.get_val() - 333) <= err
+    #     print(approx.get_val())
+    #     print("Unit Test 04: pass")
+    #
+    # def test_05(self):
+    #     #x^2 + 5 with the midpoint rule on a partition of 250
+    #     print("****Unit Test 05********")
+    #
+    #     fexpr = make_plus(make_pwr('x', 2.0),
+    #                                make_const(5.0))
+    #     a, b, n = make_const(0.0), make_const(4.0), make_const(250)
+    #     approx = midpoint_rule(fexpr, a, b, n)
+    #     print(approx)
+    #     err = 0.001
+    #     iv = antiderivdef(fexpr, a, b)
+    #     print(iv)
+    #     assert abs(approx.get_val() - iv.get_val()) <= err
+    #     print("Unit Test 05: pass")
+    #
+    # def test_06(self):
+    #     #x^2 + 5 with the trapezoidal rule on a partition of 350
+    #     print("****Unit Test 06********")
+    #
+    #     fexpr = make_plus(make_pwr('x', 2.0),
+    #                                make_const(5.0))
+    #     a, b, n = make_const(0.0), make_const(4.0), make_const(350)
+    #     approx = trapezoidal_rule(fexpr, a, b, n)
+    #     print(approx)
+    #     err = 0.001
+    #     iv = antiderivdef(fexpr, a, b)
+    #     print(iv)
+    #     assert abs(approx.get_val() - iv.get_val()) <= err
+    #     print("Unit Test 06: pass")
+    #
+    # def test_07(self):
+    #     # x^2 + 5 with the simpson rule on a partition of 10 subintervals
+    #     print("****Unit Test 07********")
+    #
+    #     fexpr = make_plus(make_pwr('x', 2.0),
+    #                                make_const(5.0))
+    #     a, b, n = make_const(0.0), make_const(4.0), make_const(10)
+    #     approx = simpson_rule(fexpr, a, b, n)
+    #     print(approx)
+    #     err = 0.001
+    #     iv = antiderivdef(fexpr, a, b)
+    #     print(iv)
+    #     assert abs(approx.get_val() - iv.get_val()) <= err
+    #     print("Unit Test 07: pass")
+    #
+    # def test_08(self):
+    #     # 2xe^(x^2) with the simpson rule on a partition of 100 subintervals
+    #     print("****Unit Test 08********")
+    #
+    #     fexpr = make_prod(make_prod(make_const(2.0),
+    #                               make_pwr('x', 1.0)),
+    #                     make_e_expr(make_pwr('x', 2.0)))
+    #     a, b, n = make_const(0.0), make_const(2.0), make_const(100)
+    #     approx = simpson_rule(fexpr, a, b, n)
+    #     print(approx)
+    #     err = 0.001
+    #     assert abs(approx.get_val() - 53.5981514272) <= err
+    #     print("Unit Test 08: pass")
+    #
+    # def test_09(self):
+    #     # (1+x^3)^0.5 with the simpson rule on a partition of 100 subintervals
+    #     print("****Unit Test 09********")
+    #
+    #     fex1 = make_plus(make_const(1.0),
+    #                     make_pwr('x', 3.0))
+    #     fex = make_pwr_expr(fex1, 0.5)
+    #     a, b, n = make_const(0.0), make_const(2.0), make_const(100)
+    #     approx = simpson_rule(fex, a, b, n)
+    #     print(approx)
+    #     err = 0.001
+    #     assert abs(approx.get_val() - 3.24124) <= err
+    #     print("Unit Test 09: pass")
+    #
+    # def test_10(self):
+    #     print("****Unit Test 10********")
+    #     fex = make_prod(make_const(3.0), make_pwr('x', 2.0))
+    #     fex = make_plus(fex, make_e_expr(make_pwr('x', 1.0)))
+    #     plot_riemann_error(fex, make_const(-1.0), make_const(1.0), make_const(4.35),
+    #                                                 make_const(50))
+    #
+    # def test_11(self):
+    #     print("****Unit Test 11********")
+    #     fex = make_const(4.0)
+    #     print(antiderivdef(fex, const(0.0), const(3.0)))
+    def test_12(self):
+        # print(demand_elasticity(const(20)))
+        fex = make_plus(make_prod(const(0.03), make_pwr('x', 2.0)), make_prod(const(-2.0), make_plus(make_pwr('x', 1.0), const(25))))
         print(fex)
-        err_list = riemann_approx_with_gt(fex,
-                                          make_const(-1.0),
-                                          make_const(1.0),
-                                          make_const(4.35),
-                                          make_const(10),
-                                          pp=0)
+        print(net_change(fex, const(20), const(25)))
+    #
+    # def test_13(self):
+    #     dexpr = make_plus(make_const(50), make_prod(make_const(-0.06), make_pwr('x', 2.0)))
+    #     print(dexpr)
+    #     print(consumer_surplus(dexpr, const(20)))
 
-        for n, err in err_list:
-            print(n, err)
-        print("Unit Test 01: pass")
+    # def test_14(self):
+    #     bell_curve_iq_approx(const(120), const(126))
 
-    def test_02(self):
-        #(3x^2 +e^x) with the left point riemann sum on a partition of 10 subintervals
-        print("****Unit Test 02********")
-        fex1 = make_prod(make_const(3.0), make_pwr('x', 2.0))
-        fex = make_plus(fex1, make_e_expr(make_pwr('x', 1.0)))
-        print(fex)
-        err_list = riemann_approx_with_gt(fex,
-                                          make_const(-1.0),
-                                          make_const(1.0),
-                                          make_const(4.35),
-                                          make_const(10),
-                                          pp=-1)
-
-        for n, err in err_list:
-            print(n, err)
-        print("Unit Test 02: pass")
-
-    def test_03(self):
-        #(3x^2 +e^x) with the right point riemann sum on a partition of 10 subintervals
-        print("****Unit Test 03********")
-        fex1 = make_prod(make_const(3.0), make_pwr('x', 2.0))
-        fex = make_plus(fex1, make_e_expr(make_pwr('x', 1.0)))
-        print(fex)
-        err_list = riemann_approx_with_gt(fex,
-                                          make_const(-1.0),
-                                          make_const(1.0),
-                                          make_const(4.35),
-                                          make_const(10),
-                                          pp=+1)
-
-        for n, err in err_list:
-            print(n, err)
-        print("Unit Test 03: pass")
-
-    def test_04(self):
-        # ln(x )with the middle point riemann sum on a partition of 100 subintervals
-        print("****Unit Test 04********")
-
-        fex = make_ln(make_pwr('x', 1.0))
-        print(fex)
-        err = 0.0001
-        approx = riemann_approx(fex,
-                                  make_const(1.0),
-                                  make_const(2.0),
-                                  make_const(100),
-                                  pp=0)
-        print(approx.get_val())
-        assert  abs(approx.get_val() - 0.386296444432) <= err
-        print("Unit Test 04: pass")
-
-    def test_04_left_and_right_riemann(self):
-        # x^2 with 10 subintervals
-        print("****Unit Test 04********")
-
-        fex = make_pwr('x', 2.0)
-        print(fex)
-        err = 0.0001
-        approx = riemann_approx(fex,
-                                  make_const(1.0),
-                                  make_const(10.0),
-                                  make_const(10),
-                                  pp=-1)
-
-        # assert  abs(approx.get_val() - 333) <= err
-        print(approx.get_val())
-        print("Unit Test 04: pass")
-
-    def test_05(self):
-        #x^2 + 5 with the midpoint rule on a partition of 250
-        print("****Unit Test 05********")
-
-        fexpr = make_plus(make_pwr('x', 2.0),
-                                   make_const(5.0))
-        a, b, n = make_const(0.0), make_const(4.0), make_const(250)
-        approx = midpoint_rule(fexpr, a, b, n)
-        print(approx)
-        err = 0.001
-        iv = antiderivdef(fexpr, a, b)
-        print(iv)
-        assert abs(approx.get_val() - iv.get_val()) <= err
-        print("Unit Test 05: pass")
-
-    def test_06(self):
-        #x^2 + 5 with the trapezoidal rule on a partition of 350
-        print("****Unit Test 06********")
-
-        fexpr = make_plus(make_pwr('x', 2.0),
-                                   make_const(5.0))
-        a, b, n = make_const(0.0), make_const(4.0), make_const(350)
-        approx = trapezoidal_rule(fexpr, a, b, n)
-        print(approx)
-        err = 0.001
-        iv = antiderivdef(fexpr, a, b)
-        print(iv)
-        assert abs(approx.get_val() - iv.get_val()) <= err
-        print("Unit Test 06: pass")
-
-    def test_07(self):
-        # x^2 + 5 with the simpson rule on a partition of 10 subintervals
-        print("****Unit Test 07********")
-
-        fexpr = make_plus(make_pwr('x', 2.0),
-                                   make_const(5.0))
-        a, b, n = make_const(0.0), make_const(4.0), make_const(10)
-        approx = simpson_rule(fexpr, a, b, n)
-        print(approx)
-        err = 0.001
-        iv = antiderivdef(fexpr, a, b)
-        print(iv)
-        assert abs(approx.get_val() - iv.get_val()) <= err
-        print("Unit Test 07: pass")
-
-    def test_08(self):
-        # 2xe^(x^2) with the simpson rule on a partition of 100 subintervals
-        print("****Unit Test 08********")
-
-        fexpr = make_prod(make_prod(make_const(2.0),
-                                  make_pwr('x', 1.0)),
-                        make_e_expr(make_pwr('x', 2.0)))
-        a, b, n = make_const(0.0), make_const(2.0), make_const(100)
-        approx = simpson_rule(fexpr, a, b, n)
-        print(approx)
-        err = 0.001
-        assert abs(approx.get_val() - 53.5981514272) <= err
-        print("Unit Test 08: pass")
-
-    def test_09(self):
-        # (1+x^3)^0.5 with the simpson rule on a partition of 100 subintervals
-        print("****Unit Test 09********")
-
-        fex1 = make_plus(make_const(1.0),
-                        make_pwr('x', 3.0))
-        fex = make_pwr_expr(fex1, 0.5)
-        a, b, n = make_const(0.0), make_const(2.0), make_const(100)
-        approx = simpson_rule(fex, a, b, n)
-        print(approx)
-        err = 0.001
-        assert abs(approx.get_val() - 3.24124) <= err
-        print("Unit Test 09: pass")
-
-    def test_10(self):
-        print("****Unit Test 10********")
-        fex = make_prod(make_const(3.0), make_pwr('x', 2.0))
-        fex = make_plus(fex, make_e_expr(make_pwr('x', 1.0)))
-        plot_riemann_error(fex, make_const(-1.0), make_const(1.0), make_const(4.35),
-                                                    make_const(50))
-
-    def test_11(self):
-        print("****Unit Test 11********")
-        fex = make_const(4.0)
-        print(antiderivdef(fex, const(0.0), const(3.0)))
+    # def test_15(self):
+    #     print("****Unit Test 02********")
+    #     # p, t0, p0, t1, p1
+    #     eq = spread_of_disease_model(make_const(500000), make_const(0.0), make_const(200.0), make_const(1.0),
+    #                                  make_const(500.0))
+    #     assert not eq is None
+    #     print("eq: ", eq)
+    #     eqf = tof(eq)
+    #     assert not eqf is None
+    #     err = 100.0
+    #     gt = lambda t: 500000 / (1 + (2499 * math.e ** (-500000 * .000001833782304372798 * t)))
+    #     print(gt(1), eqf(1))
 
     if __name__ == "__main__":
         unittest.main()
