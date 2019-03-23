@@ -5,6 +5,7 @@ import cv2
 import sys
 import os
 import re
+import numpy
 import statistics
 
 def generate_file_names(ftype, rootdir):
@@ -83,23 +84,39 @@ def find_mode(arr):
 
     return statistics.mode(new_arr)
 
+def find_SD(arr):
+
+    new_arr = []
+
+    for row in arr:
+        for col in row:
+            new_arr.append(col)
+
+    return numpy.std(new_arr)
+
 def mean_median_mode(image_path):
     image = cv2.imread(image_path)
     B, G, R = cv2.split(image)
 
-    blue_mean = find_mean(B)
-    green_mean = find_mean(G)
-    red_mean = find_mean(R)
+    # blue_mean = find_mean(B)
+    # green_mean = find_mean(G)
+    # red_mean = find_mean(R)
+    #
+    # blue_median = find_median(B)
+    # green_median = find_median(G)
+    # red_median = find_median(R)
+    #
+    # blue_mode = find_mode(B)
+    # green_mode = find_mode(G)
+    # red_mode  = find_mode(R)
 
-    blue_median = find_median(B)
-    green_median = find_median(G)
-    red_median = find_median(R)
-
-    blue_mode = find_mode(B)
-    green_mode = find_mode(G)
-    red_mode  = find_mode(R)
-
-    return {"mean":(blue_mean, green_mean, red_mean), "median":(blue_median, green_median, red_median), "mode":(blue_mode, green_mode, red_mode)}
+    blue_sd = find_SD(B)
+    # green_sd = find_SD(G)
+    # red_sd = find_SD(R)
+    return {"sd": blue_sd}
+    #
+    # return {"mean":(blue_mean, green_mean, red_mean), "median":(blue_median, green_median, red_median), "mode":(blue_mode, green_mode, red_mode), "standard deviation":
+    #     (blue_sd, green_sd, red_sd)}
 
 # def amplify_grayscale_blur_img_dir(ftype, in_img_dir, kz, c, amount):
 #
