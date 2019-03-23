@@ -181,7 +181,7 @@ class Assign01UnitTests(unittest.TestCase):
     #     print(antiderivdef(fex, const(0.0), const(3.0)))
     def test_12(self):
         # print(demand_elasticity(const(20)))
-        fex = make_plus(make_prod(const(0.03), make_pwr('x', 2.0)), make_prod(const(-2.0), make_plus(make_pwr('x', 1.0), const(25))))
+        fex = make_plus(make_plus(make_prod(const(0.03),make_pwr('x', 2.0)), make_prod(const(-2.0), make_pwr('x', 1.0))),const(25))
         print(fex)
         print(net_change(fex, const(20), const(25)))
     #

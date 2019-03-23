@@ -114,21 +114,16 @@ def plot_spread_of_news(p, k, tl, tu):
 
 
 #########PROBLEM 5- NET CHANGE####################
-def net_change(mrexpr, pl1, pl2): ###being stupid and not working like it should
+def net_change(mrexpr, pl1, pl2):
     assert isinstance(pl1, const)
     assert isinstance(pl2, const)
+
     #F(b) - F(a)
     a = pl1
     b = pl2
     F = tof(antideriv(mrexpr))
-    print( F(a.get_val()))
-    # return (tof(anti)(pl2.get_val()) - tof(anti)(pl1.get_val()))
 
-    # F = tof(antideriv(mrexpr))
-    # # print("anti deriv: ", x)
-    # print(F(pl1.get_val()))
-
-    # return F(pl2.get_val()) - F(pl1.get_val())
+    return F(b.get_val()) - F(a.get_val())
 
 
 ############PROBLEM 6 - CONSUMER SURPLUS##########
