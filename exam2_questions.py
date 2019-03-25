@@ -108,9 +108,7 @@ def plot_spread_of_news(p, k, tl, tu):
 
 
 ########PROBLEM 4- IMAGES##########################
-
-
-
+#In another file
 
 
 #########PROBLEM 5- NET CHANGE####################
@@ -211,3 +209,24 @@ def bell_curve_iq_approx(a, b):
 
 
 ###########PROBLEM 10  -TAYLOR POLYNOMIALS ################
+def taylor_poly(fexpr, a, n):
+    assert isinstance(a, const)
+    assert isinstance(n, const)
+
+    tof_exp = tof(fexpr)
+    val = 0
+    ex = fexpr
+    for i in range(1, 3):
+        print("i= ", i)
+        drv = deriv(ex)
+        print("drv= ", drv)
+        drv_tof = tof(drv)
+        first = drv_tof(n.get_val())/ math.factorial(i)
+        val = make_prod(first,make_pwr('x', i))
+
+        print("val= ", val)
+        ex = drv
+        print('ex= ', ex)
+
+    return tof_exp(a.get_val()) + val
+

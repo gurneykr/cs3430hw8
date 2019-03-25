@@ -5,7 +5,7 @@ from riemann import riemann_approx, riemann_approx_with_gt, plot_riemann_error
 from deriv import deriv
 from antideriv import antideriv, antiderivdef
 from defintegralapprox import midpoint_rule, trapezoidal_rule, simpson_rule
-from exam2_questions import demand_elasticity, net_change, consumer_surplus, bell_curve_iq_approx,spread_of_disease_model
+from exam2_questions import demand_elasticity, net_change, consumer_surplus, bell_curve_iq_approx,spread_of_disease_model, taylor_poly
 import unittest
 import math
 
@@ -179,11 +179,11 @@ class Assign01UnitTests(unittest.TestCase):
     #     print("****Unit Test 11********")
     #     fex = make_const(4.0)
     #     print(antiderivdef(fex, const(0.0), const(3.0)))
-    def test_12(self):
-        # print(demand_elasticity(const(20)))
-        fex = make_plus(make_plus(make_prod(const(0.03),make_pwr('x', 2.0)), make_prod(const(-2.0), make_pwr('x', 1.0))),const(25))
-        print(fex)
-        print(net_change(fex, const(20), const(25)))
+    # def test_12(self):
+    #     # print(demand_elasticity(const(20)))
+    #     fex = make_plus(make_plus(make_prod(const(0.03),make_pwr('x', 2.0)), make_prod(const(-2.0), make_pwr('x', 1.0))),const(25))
+    #     print(fex)
+    #     print(net_change(fex, const(20), const(25)))
     #
     # def test_13(self):
     #     dexpr = make_plus(make_const(50), make_prod(make_const(-0.06), make_pwr('x', 2.0)))
@@ -205,6 +205,10 @@ class Assign01UnitTests(unittest.TestCase):
     #     err = 100.0
     #     gt = lambda t: 500000 / (1 + (2499 * math.e ** (-500000 * .000001833782304372798 * t)))
     #     print(gt(1), eqf(1))
+
+    def test_16(self):
+        expr = make_pwr('x', 0.5)
+        print(taylor_poly(expr, const(1.0), const(1.0)))
 
     if __name__ == "__main__":
         unittest.main()
