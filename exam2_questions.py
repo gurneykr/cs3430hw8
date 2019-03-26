@@ -192,7 +192,7 @@ def simpson_rule(fexpr, a, b, n):
 
 def gaussian_pdf(x, sigma=1, mu=0):
     a = 1.0/(sigma*math.sqrt(2*math.pi))
-    b = math.e**(-0.5(((x - mu)/sigma)**2))
+    b = math.e**(-0.5*(((x - mu)/sigma)**2))
     return a*b
 
 def bell_curve_iq_approx(a, b):
@@ -204,7 +204,7 @@ def bell_curve_iq_approx(a, b):
 
 
 ###########PROBLEM 9 - LEAST SQUARES#####################
-
+#look at his examples
 
 
 

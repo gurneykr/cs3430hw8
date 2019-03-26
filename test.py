@@ -190,8 +190,8 @@ class Assign01UnitTests(unittest.TestCase):
     #     print(dexpr)
     #     print(consumer_surplus(dexpr, const(20)))
 
-    # def test_14(self):
-    #     bell_curve_iq_approx(const(120), const(126))
+    def test_14(self):
+        bell_curve_iq_approx(const(120), const(126))
 
     # def test_15(self):
     #     print("****Unit Test 02********")
@@ -206,12 +206,12 @@ class Assign01UnitTests(unittest.TestCase):
     #     gt = lambda t: 500000 / (1 + (2499 * math.e ** (-500000 * .000001833782304372798 * t)))
     #     print(gt(1), eqf(1))
 
-    def test_16(self):
-        expr = make_pwr('x', 0.5)
-        result = taylor_poly(expr, const(1.0), const(3.0))
-        taylor = tof(taylor_poly(expr, const(1.0), const(3.0)))
-        print(result)
-        print("evaluated at 1.02: ",taylor(1.02))
+    # def test_16(self):
+    #     expr = make_pwr('x', 0.5)
+    #     result = taylor_poly(expr, const(1.0), const(3.0))
+    #     taylor = tof(taylor_poly(expr, const(1.0), const(3.0)))
+    #     print(result)
+    #     print("evaluated at 1.02: ",taylor(1.02))
 
     if __name__ == "__main__":
         unittest.main()
