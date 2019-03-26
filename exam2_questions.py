@@ -216,17 +216,26 @@ def taylor_poly(fexpr, a, n):
     tof_exp = tof(fexpr)
     val = 0
     ex = fexpr
-    for i in range(1, 3):
+    print(ex)
+    # tof_exp(a.get_val()) + (deriv(fexpr)/math.factorial(n.get_val()))*(x - a.get_val)^n
+    result = tof_exp(a.get_val())
+
+    for i in range(1, int(n.get_val())):
         print("i= ", i)
         drv = deriv(ex)
         print("drv= ", drv)
         drv_tof = tof(drv)
-        first = drv_tof(n.get_val())/ math.factorial(i)
-        val = make_prod(first,make_pwr('x', i))
 
-        print("val= ", val)
+        inside = const(drv_tof(a.get_val())/math.factorial(i))
+        print("inside: ", inside.get_val())
+        x = make_plus(make_pwr('x', 1.0), make_prod(const(-1.0), a))
+
+        pw = make_pwr(x, i)
+        print("pw: ", pw)
+
+        result = make_plus(result, make_prod(inside, pw))
+        print("result: ",result)
         ex = drv
-        print('ex= ', ex)
 
-    return tof_exp(a.get_val()) + val
+    return result
 
