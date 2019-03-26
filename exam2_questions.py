@@ -214,27 +214,21 @@ def taylor_poly(fexpr, a, n):
     assert isinstance(n, const)
 
     tof_exp = tof(fexpr)
-    val = 0
     ex = fexpr
-    print(ex)
+    # print(ex)
     # tof_exp(a.get_val()) + (deriv(fexpr)/math.factorial(n.get_val()))*(x - a.get_val)^n
-    result = tof_exp(a.get_val())
+    result = const(tof_exp(a.get_val()))
 
     for i in range(1, int(n.get_val())):
-        print("i= ", i)
         drv = deriv(ex)
-        print("drv= ", drv)
         drv_tof = tof(drv)
 
         inside = const(drv_tof(a.get_val())/math.factorial(i))
-        print("inside: ", inside.get_val())
         x = make_plus(make_pwr('x', 1.0), make_prod(const(-1.0), a))
 
-        pw = make_pwr(x, i)
-        print("pw: ", pw)
+        pw = make_pwr_expr(x, i)
 
         result = make_plus(result, make_prod(inside, pw))
-        print("result: ",result)
         ex = drv
 
     return result

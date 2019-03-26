@@ -208,7 +208,10 @@ class Assign01UnitTests(unittest.TestCase):
 
     def test_16(self):
         expr = make_pwr('x', 0.5)
-        print(taylor_poly(expr, const(1.0), const(2.0)))
+        result = taylor_poly(expr, const(1.0), const(3.0))
+        taylor = tof(taylor_poly(expr, const(1.0), const(3.0)))
+        print(result)
+        print("evaluated at 1.02: ",taylor(1.02))
 
     if __name__ == "__main__":
         unittest.main()
